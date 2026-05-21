@@ -1,0 +1,352 @@
+body{
+    margin: 0;
+    padding: 0;
+
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+
+    position: relative;
+
+    font-family: "Courier New", monospace;
+
+    background: #f6c177;
+}
+
+/* trời sáng */
+
+body::after{
+    content: "";
+
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    background:
+    linear-gradient(
+        to bottom,
+        #f8e0c8,
+        #d9a066,
+        #7a523d
+    );
+
+    z-index: -3;
+}
+
+/* trời tối phủ lên */
+
+body::before{
+    content: "";
+
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    background:
+    linear-gradient(
+        to bottom,
+        #1e1b2e,
+        #3b2f4a,
+        #120d18
+    );
+
+    opacity: 0;
+
+    animation: nightfade 10s infinite alternate;
+
+    z-index: -2;
+}
+
+/* trời tối dần */
+
+@keyframes nightfade{
+
+    0%{
+        opacity: 0;
+    }
+
+    100%{
+        opacity: 1;
+    }
+}
+
+/* container */
+
+.container{
+
+    background: rgba(255,255,255,0.1);
+
+    backdrop-filter: blur(6px);
+
+    padding: 20px;
+
+    border-radius: 25px;
+
+    text-align: center;
+
+    width: 400px;
+
+    box-shadow:
+        0 0 25px rgba(0,0,0,0.3);
+
+    border: 3px solid rgba(255,255,255,0.15);
+
+    z-index: 2;
+    border-top: 2px solid rgba(255,255,255,0.4);
+
+border-left: 2px solid rgba(255,255,255,0.3);
+}
+
+/* tiêu đề */
+
+h1{
+    color: #fff5e6;
+
+    font-size: 50px;
+
+    text-shadow:
+        4px 4px #5b3a29;
+
+    margin-bottom: 10px;
+
+    letter-spacing: 3px;
+}
+
+/* quote */
+
+.quote{
+    color: #ffe8c7;
+
+    font-size: 18px;
+
+    margin-bottom: 20px;
+}
+
+/* ảnh */
+
+img{
+    width: 250px;
+
+    border-radius: 20px;
+
+    border: 4px solid #fff2df;
+
+    box-shadow:
+        0 0 15px rgba(0,0,0,0.4);
+
+    transition: 0.4s;
+}
+
+img:hover{
+    transform: scale(1.05);
+}
+
+/* ô nhập */
+
+input{
+
+    width: 260px;
+
+    height: 45px;
+
+    border: none;
+
+    border-radius: 15px;
+
+    padding-left: 15px;
+
+    font-size: 16px;
+
+    background: #fff7ee;
+
+    color: #5c4033;
+
+    outline: none;
+
+    margin-top: 10px;
+
+    box-shadow:
+        inset 3px 3px 6px rgba(0,0,0,0.1);
+}
+
+/* nút */
+
+button{
+
+    margin: 10px;
+
+    padding: 12px 22px;
+
+    border: none;
+
+    border-radius: 15px;
+
+    background: #6f4e37;
+
+    color: white;
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+
+    font-family: "Courier New", monospace;
+
+    box-shadow:
+        4px 4px 0 #3d2a20;
+}
+
+button:hover{
+
+    transform: translateY(-4px);
+
+    background: #8b5e3c;
+}
+
+/* footer */
+
+.footer{
+
+    margin-top: 20px;
+
+    color: #f5dfc8;
+
+    font-size: 14px;
+
+    opacity: 0.8;
+}
+
+/* mặt trời */
+
+.sun{
+
+    width: 120px;
+    height: 120px;
+
+    background: #ffd36b;
+
+    border-radius: 50%;
+
+    position: absolute;
+
+    top: 80px;
+    left: 100px;
+
+    box-shadow:
+        0 0 50px #ffcf66;
+
+    animation: sunmove 10s infinite alternate;
+}
+
+/* mặt trăng */
+
+.moon{
+
+    width: 90px;
+    height: 90px;
+
+    background: #f5f3ff;
+
+    border-radius: 50%;
+
+    position: absolute;
+
+    top: 100px;
+    right: 120px;
+
+    opacity: 0;
+
+    box-shadow:
+        0 0 40px #ffffff;
+
+    animation: moonshow 10s infinite alternate;
+}
+
+/* mặt trời lặn */
+
+@keyframes sunmove{
+
+    0%{
+        top: 80px;
+        left: 100px;
+    }
+
+    100%{
+        top: 450px;
+        left: 700px;
+
+        opacity: 0.2;
+    }
+}
+
+/* mặt trăng hiện */
+
+@keyframes moonshow{
+
+    0%{
+        opacity: 0;
+    }
+
+    100%{
+        opacity: 1;
+    }
+}
+
+
+.rain{
+
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    z-index: 0;
+
+    opacity: 0.4;
+}
+
+
+
+.drop{
+
+    position: absolute;
+
+    top: -100px;
+
+    width: 1px;
+    height: 60px;
+
+    background:
+    linear-gradient(
+        transparent,
+        rgba(255,255,255,0.4)
+    );
+
+    animation: rainfall linear forwards;
+
+    filter: blur(1px);
+}
+
+/* rơi xuống */
+
+@keyframes rainfall{
+
+    from{
+        transform: translateY(0);
+    }
+
+    to{
+        transform: translateY(120vh);
+    }
+}
